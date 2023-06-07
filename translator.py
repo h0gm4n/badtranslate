@@ -10,11 +10,10 @@ class BadTranslator():
     def __init__(self):
         self.translator = Translator()
         self.counter = 0
-        self.iterations = 40
         self.language_list = googletrans.LANGUAGES
         self.language_list_new = list(self.language_list.keys())
 
-    def translate(self, sentence):
+    def translate(self, sentence, iterations):
 
         if self.counter == iterations:
             translation = self.translator.translate(sentence, dest='fi')
@@ -23,13 +22,12 @@ class BadTranslator():
 
         translation = self.translator.translate(sentence, dest=f'{self.language_list_new[randint(0, len(self.language_list_new)-1)]}')
         sentence = translation.text
-        #print(sentence)
         self.counter += 1
-        self.translate(sentence)
+        self.translate(sentence, iterations)
 
-sentence = "Onks sul heittää mitää bäfist bämärii tai flindaa"
-iterations = 50
+sentence = "Umberto Komulainen ei mikään tavallinen Mikael"
 b = BadTranslator()
-b.translate(sentence)
+iterations = 20
+b.translate(sentence, iterations)
 
 print("Kesto: " + str((time.time() - start_time)))
