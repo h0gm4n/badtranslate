@@ -1,0 +1,40 @@
+<title>Bad Translator</title>
+
+
+{% if tulos %}
+
+<form action="/result" method="POST">
+    <br>
+    Iteraatioiden määrä:
+    <br>
+    <input type="text" name="iterations" value="30">
+    <br>
+    <br>
+    Teksti:
+    <br>
+    <textarea name="sentence" rows="3" cols="50">{{ sentence }}</textarea>
+    <br>
+    <input type="submit" value="Lähetä">
+</form>
+<br>
+Tulos:
+<br>
+{{ tulos }}
+
+{% else %}
+
+<form action="/result" method="POST">
+    <br>
+    Iteraatioiden määrä:
+    <br>
+    <input type="text" name="iterations" value="30">
+    <br>
+    <br>
+    Teksti:
+    <br>
+    <textarea name="sentence" rows="3" cols="50"></textarea>
+    <br>
+    <input type="submit" value="Lähetä">
+</form>
+
+{% endif %}
